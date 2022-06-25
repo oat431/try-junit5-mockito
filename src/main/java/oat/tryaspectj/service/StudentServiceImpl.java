@@ -14,17 +14,32 @@ public class StudentServiceImpl implements StudentService{
     StudentDao studentDao;
 
     @Override
+    public Student addStudent(Student student) {
+        return studentDao.addStudent(student);
+    }
+
+    @Override
+    public Student updateStudent(Student student, String id) {
+        Student update = studentDao.getStudentById(id);
+        update.setFirstname(student.getFirstname());
+        update.setLastname(student.getLastname());
+        return studentDao.updateStudent(update);
+    }
+
+    @Override
+    public Student deleteStudent(String id) {
+        Student delete = studentDao.getStudentById(id);
+        studentDao.deleteStudent(delete);
+        return delete;
+    }
+
+    @Override
     public List<Student> getAllStudents() {
         return studentDao.getAllStudents();
     }
 
     @Override
     public Student getStudent(String id){
-        for(Student student : studentDao.getAllStudents()){
-            if(id.equals(student.getId())){
-                return student;
-            }
-        }
-        return null;
+        return studentDao.getStudentById(id);
     }
 }

@@ -1,28 +1,39 @@
 package oat.tryaspectj.dao;
 
 import oat.tryaspectj.entity.Student;
+import oat.tryaspectj.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Repository
 public class StudentDaoImpl implements StudentDao{
-    Student[] students = {
-            new Student("5006","SK","Man"),
-            new Student("5010","Tle","Vector"),
-            new Student("5011","DJ","LnRabbit"),
-            new Student("5017","Pun","Dounut"),
-            new Student("5018","Teetanic","Teem"),
-            new Student("5023","Plunk","Pisuo"),
-            new Student("5026","Fax","Domdae"),
-            new Student("5028","Kong","Pazum"),
-            new Student("5039","Oat","Oralita")
-    };
-    @Override
+    @Autowired
+    StudentRepository studentRepository;
 
+    @Override
     public List<Student> getAllStudents() {
-        return Arrays.stream(students).toList();
+        return studentRepository.findAll();
     }
 
+    @Override
+    public Student addStudent(Student student) {
+        return studentRepository.save(student);
+    }
+
+    @Override
+    public Student updateStudent(Student student) {
+        return studentRepository.save(student);
+    }
+
+    @Override
+    public Student getStudentById(String id) {
+        return studentRepository.findByStudentId(id);
+    }
+
+    @Override
+    public void deleteStudent(Student student) {
+        studentRepository.delete(student);
+    }
 }

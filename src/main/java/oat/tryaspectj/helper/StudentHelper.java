@@ -16,16 +16,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class StudentHelper {
 
-    @Before("execution(* oat.tryaspectj.controller.StudentController.addStudent(..)) ")
-    @SneakyThrows
-    public void checkStudentID(JoinPoint joinPoint) {
-        Object[] objects = joinPoint.getArgs();
-        Student student = (Student) objects[0];
-        if(student.getId().length() != 9){
-            throw new StudentIdInvalidException(student.getId());
-        }
-    }
-
     @AfterReturning(pointcut = "execution(* oat.tryaspectj.service.StudentServiceImpl.getStudent(..))",returning = "result")
     @SneakyThrows
     public void checkStudentExist(JoinPoint joinPoint,Object result){
