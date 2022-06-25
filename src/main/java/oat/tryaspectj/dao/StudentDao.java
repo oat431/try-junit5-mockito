@@ -9,5 +9,6 @@ public interface StudentDao {
     Student addStudent(Student student);
     Student updateStudent(Student student);
     Student getStudentById(String id);
+    Student getStudentByStudentName(String firstname, String lastname);
     void deleteStudent(Student id);
 }

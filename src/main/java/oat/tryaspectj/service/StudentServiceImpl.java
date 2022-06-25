@@ -19,7 +19,7 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public Student updateStudent(Student student, String id) {
+    public Student updateStudent(String id,Student student) {
         Student update = studentDao.getStudentById(id);
         update.setFirstname(student.getFirstname());
         update.setLastname(student.getLastname());

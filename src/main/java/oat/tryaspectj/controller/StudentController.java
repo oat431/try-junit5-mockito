@@ -24,7 +24,7 @@ public class StudentController {
             @RequestBody Student student,
             @PathVariable("id") String id
     ){
-        return ResponseEntity.ok(studentService.updateStudent(student,id));
+        return ResponseEntity.ok(studentService.updateStudent(id,student));
     }
 
     @PostMapping("/delete/{id}")

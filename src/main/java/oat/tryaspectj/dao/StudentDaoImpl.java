@@ -33,6 +33,11 @@ public class StudentDaoImpl implements StudentDao{
     }
 
     @Override
+    public Student getStudentByStudentName(String firstname, String lastname) {
+        return studentRepository.findByFirstnameAndLastname(firstname,lastname);
+    }
+
+    @Override
     public void deleteStudent(Student student) {
         studentRepository.delete(student);
     }
