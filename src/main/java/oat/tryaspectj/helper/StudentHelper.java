@@ -44,7 +44,7 @@ public class StudentHelper {
     @SneakyThrows
     public void checkStudentDataDuplicateWhenUpdate(JoinPoint joinPoint){
         Object[] objects = joinPoint.getArgs();
-        Student student = (Student) objects[0];
+        Student student = (Student) objects[1];
         Student checkDuplicateName = studentDao.getStudentByStudentName(student.getFirstname(),student.getLastname());
         if(checkDuplicateName != null) {
             throw new StudentNameAlreadyExist(student.getFirstname(),student.getLastname());
