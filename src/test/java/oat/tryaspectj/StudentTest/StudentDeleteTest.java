@@ -27,8 +27,8 @@ public class StudentDeleteTest {
     void setUp(){
         student1 = Student.builder()
                 .studentId("5006")
-                .firstname("studentOne")
-                .lastname("numberOne")
+                .firstname("Tar")
+                .lastname("SK-man")
                 .build();
         student2 = Student.builder()
                 .studentId("622115000")
@@ -45,6 +45,7 @@ public class StudentDeleteTest {
             studentService.getStudent(student1.getStudentId());
         });
         assertEquals(HttpStatus.NOT_FOUND,exception.getStatus());
+        studentService.addStudent(student1);
     }
 
     @Test

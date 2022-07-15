@@ -21,7 +21,7 @@ public class StudentUpdateTest {
 
     @Autowired
     StudentService studentService;
-    Student student1,student2,student3;
+    Student student1,student2,student3,student4;
 
     @BeforeEach
     void setUp(){
@@ -40,6 +40,11 @@ public class StudentUpdateTest {
                 .firstname("Oat")
                 .lastname("Oralita")
                 .build();
+        student4 = Student.builder()
+                .studentId("5017")
+                .firstname("Pun")
+                .lastname("Donut")
+                .build();
     }
 
     @Test
@@ -49,6 +54,8 @@ public class StudentUpdateTest {
         studentService.updateStudent("5017",student1);
         assertEquals("studentOn1", studentService.getStudent("5017").getFirstname());
         assertEquals("numberOn1", studentService.getStudent("5017").getLastname());
+        studentService.deleteStudent("5017");
+        studentService.addStudent(student4);
     }
 
     @Test

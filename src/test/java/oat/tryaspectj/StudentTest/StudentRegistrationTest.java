@@ -48,6 +48,7 @@ public class StudentRegistrationTest {
         assertNotNull(studentService.getStudent("5000"));
         assertEquals("studentOne", studentService.getStudent("5000").getFirstname());
         assertEquals("numberOne", studentService.getStudent("5000").getLastname());
+        studentService.deleteStudent("5000");
     }
 
     @Test
