@@ -1,4 +1,4 @@
-# try-junit5
+# try-junit5-mockito
 Just try junit nothing matter anyway
 
-The Unitest of Java Programming
+The Unit test of Java Programming (Spring boot framework to be specific)
